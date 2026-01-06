@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO 优化 -->
+    <title>Izakaya Kora | Taberna Japonesa en Valencia (Benimaclet)</title>
+    <meta name="description" content="Descubre la auténtica experiencia de una taberna japonesa en Valencia. Yakitori, Oden y el mejor ambiente tradicional en el corazón de Benimaclet.">
+    <meta name="keywords" content="Izakaya Valencia, Taberna Japonesa, Restaurante Japonés Benimaclet, Yakitori Valencia, Cena Japonesa">
+    
+    <!-- 社交媒体分享预览 (Open Graph) -->
+    <meta property="og:title" content="Izakaya Kora - Taberna Japonesa">
+    <meta property="og:description" content="Tradición y calidez en cada plato. Ven a visitarnos en Benimaclet.">
+    <meta property="og:image" content="images/og-share.jpg">
+    <meta property="og:type" content="website">
+
+    <!-- 网站图标 -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700&family=Noto+Sans+SC:wght@300;400;500&display=swap');
+        
+        :root {
+            --japanese-red: #bc2424;
+            --deep-stone: #1c1917;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: var(--deep-stone); 
+            color: #e7e5e4; 
+            overflow-x: hidden;
+        }
+        .serif {
+            font-family: 'Noto Serif SC', serif;
+        }
+        
+        .japanese-pattern {
+            background-image: url("https://www.transparenttextures.com/patterns/dark-matter.png");
+            background-attachment: fixed;
+        }
+
+        .lantern-glow {
+            box-shadow: 0 0 20px rgba(188, 36, 36, 0.5);
+        }
+
+        #hero-slider {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background-color: #2a0a0a;
+        }
+        .hero-slide {
+            transition: opacity 1.5s ease-in-out;
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+        .hero-slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), #1c1917);
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        #global-modal.active, #mobile-menu.active {
+            display: flex;
+        }
+        
+        /* 平滑滚动 */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="japanese-pattern selection:bg-red-900 selection:text-white">
+
+    <!-- 语言配置 -->
+    <script>
+        const translations = {
+            es: {
+                nav_about: "Sobre Nosotros",
+                nav_menu: "Carta",
+                nav_gallery: "Especialidades",
+                nav_location: "Ubicación",
+                nav_book: "Reservar",
+                hero_title: "Izakaya Kora",
+                hero_subtitle: "Auténtica Taberna Japonesa en Benimaclet",
+                hero_cta: "Ver Ubicación",
+                story_tag: "TRADICIÓN Y CALIDEZ",
+                story_title: "El Alma de la Cocina Japonesa",
+                story_p1: "Situado en el corazón de Benimaclet, Izakaya Kora es un refugio donde la gastronomía y la hospitalidad se encuentran. Un rincón para desconectar y disfrutar de la esencia de Japón.",
+                story_p2: "Nuestra cocina celebra los sabores reconfortantes: desde el oden que abraza el alma hasta yakitoris asados con maestría. Cada bocado cuenta una historia de respeto por la tradición.",
+                menu_title: "Nuestra Carta",
+                menu_subtitle: "Haz clic para ampliar los detalles",
+                gallery_title: "Platos Destacados",
+                gallery_desc: "Una selección de nuestras creaciones más queridas. Cocina honesta, ingredientes locales y técnicas ancestrales.",
+                gallery_item1: "Brasa Tradicional",
+                gallery_item2: "Recetas Secretas",
+                gallery_item3: "Sabor de Temporada",
+                loc_title: "Encuéntranos",
+                loc_address: "Dirección",
+                loc_hours: "Horario",
+                loc_hours_val: "Mar - Dom: 19:30 - 23:30 (Lunes cerrado)",
+                loc_cta: "Abrir en Google Maps"
+            },
+            val: {
+                nav_about: "Sobre Nosaltres",
+                nav_menu: "Carta",
+                nav_gallery: "Especialitats",
+                nav_location: "Ubicació",
+                nav_book: "Reservar",
+                hero_title: "Izakaya Kora",
+                hero_subtitle: "Autèntica Taberna Japonesa a Benimaclet",
+                hero_cta: "Veure Ubicació",
+                story_tag: "TRADICIÓ I CALIDESA",
+                story_title: "L'Ànima de la Cuina Japonesa",
+                story_p1: "Situat al cor de Benimaclet, Izakaya Kora és un refugi on la gastronomia i l'hospitalitat es troben. Un racó per desconnectar i gaudir de l'essència del Japó.",
+                story_p2: "La nostra cuina celebra els sabors reconfortants: des de l'oden que abraça l'ànima fins a yakitoris rostits amb maestria. Cada mossegada conta una història de respecte per la tradició.",
+                menu_title: "La Nostra Carta",
+                menu_subtitle: "Fes clic per ampliar els detalls",
+                gallery_title: "Plats Destacats",
+                gallery_desc: "Una selección de les nostres creacions més estimades. Cuina honesta, ingredients locals i tècniques ancestrals.",
+                gallery_item1: "Brasa Tradicional",
+                gallery_item2: "Receptes Secretes",
+                gallery_item3: "Sabor de Temporada",
+                loc_title: "Troba'ns",
+                loc_address: "Adreça",
+                loc_hours: "Horari",
+                loc_hours_val: "Dim - Dum: 19:30 - 23:30 (Dilluns tancat)",
+                loc_cta: "Obrir en Google Maps"
+            },
+            en: {
+                nav_about: "About Us",
+                nav_menu: "Menu",
+                nav_gallery: "Specials",
+                nav_location: "Location",
+                nav_book: "Book",
+                hero_title: "Izakaya Kora",
+                hero_subtitle: "Authentic Japanese Tavern in Benimaclet",
+                hero_cta: "View Location",
+                story_tag: "TRADITION & WARMTH",
+                story_title: "The Soul of Japanese Cuisine",
+                story_p1: "Located in the heart of Benimaclet, Izakaya Kora is a sanctuary where gastronomy and hospitality meet. A corner to disconnect and enjoy the essence of Japan.",
+                story_p2: "Our kitchen celebrates comfort flavors: from soul-warming oden to masterfully grilled yakitori. Every bite tells a story of respect for tradition.",
+                menu_title: "Our Menu",
+                menu_subtitle: "Click to enlarge details",
+                gallery_title: "Signature Dishes",
+                gallery_desc: "A selection of our most beloved creations. Honest cooking, local ingredients, and ancestral techniques.",
+                gallery_item1: "Traditional Grill",
+                gallery_item2: "Secret Recipes",
+                gallery_item3: "Seasonal Flavors",
+                loc_title: "Find Us",
+                loc_address: "Address",
+                loc_hours: "Opening Hours",
+                loc_hours_val: "Tue - Sun: 19:30 - 23:30 (Closed on Monday)",
+                loc_cta: "Open in Google Maps"
+            }
+        };
+
+        function switchLanguage(lang) {
+            document.documentElement.lang = lang;
+            const t = translations[lang];
+            
+            Object.keys(t).forEach(key => {
+                const el = document.getElementById(`t-${key}`);
+                if (el) el.innerText = t[key];
+            });
+            
+            document.querySelectorAll('[data-t]').forEach(el => {
+                const key = el.getAttribute('data-t');
+                if (t[key]) el.innerText = t[key];
+            });
+            
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                if(btn.innerText.toLowerCase() === lang.toLowerCase() || (lang === 'val' && btn.innerText === 'VAL')) {
+                    btn.classList.add('text-red-500', 'font-bold');
+                    btn.classList.remove('text-white');
+                } else {
+                    btn.classList.remove('text-red-500', 'font-bold');
+                    btn.classList.add('text-white');
+                }
+            });
+        }
+    </script>
+
+    <!-- 导航栏 -->
+    <nav class="fixed w-full z-50 bg-[#1c1917]/95 backdrop-blur-md border-b border-stone-800">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3 z-50">
+                <div class="w-10 h-10 bg-red-700 rounded-sm flex items-center justify-center text-white font-bold lantern-glow rotate-45">
+                    <span class="-rotate-45">酒</span>
+                </div>
+                <span class="text-2xl font-bold serif tracking-tighter text-white">Izakaya Kora</span>
+            </div>
+            
+            <div class="hidden lg:flex space-x-8 text-xs font-bold tracking-widest text-stone-400 items-center uppercase">
+                <a href="#story" data-t="nav_about" class="hover:text-red-500 transition">Sobre Nosotros</a>
+                <a href="#menu" data-t="nav_menu" class="hover:text-red-500 transition">Carta</a>
+                <a href="#gallery" data-t="nav_gallery" class="hover:text-red-500 transition">Especialidades</a>
+                <a href="#location" data-t="nav_location" class="hover:text-red-500 transition">Ubicación</a>
+                
+                <div class="flex items-center gap-3 ml-4 border-l border-stone-800 pl-6">
+                    <button onclick="switchLanguage('es')" class="lang-btn hover:text-red-500 transition text-white">ES</button>
+                    <button onclick="switchLanguage('val')" class="lang-btn hover:text-red-500 transition text-white">VAL</button>
+                    <button onclick="switchLanguage('en')" class="lang-btn hover:text-red-500 transition text-white">EN</button>
+                </div>
+                
+                <a href="tel:+34123456789" data-t="nav_book" class="bg-red-800 hover:bg-red-700 text-white px-6 py-2.5 rounded-sm text-xs font-bold transition uppercase tracking-widest">
+                    Reservar
+                </a>
+            </div>
+
+            <button onclick="toggleMobileMenu()" class="lg:hidden z-50 text-white text-2xl">
+                <i class="fa-solid fa-bars" id="menu-icon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 移动端菜单层 -->
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-[#1c1917] z-40 flex-col items-center justify-center space-y-8 transition-all duration-300">
+        <a href="#story" onclick="toggleMobileMenu()" data-t="nav_about" class="text-2xl text-white font-serif">Sobre Nosotros</a>
+        <a href="#menu" onclick="toggleMobileMenu()" data-t="nav_menu" class="text-2xl text-white font-serif">Carta</a>
+        <a href="#gallery" onclick="toggleMobileMenu()" data-t="nav_gallery" class="text-2xl text-white font-serif">Especialidades</a>
+        <a href="#location" onclick="toggleMobileMenu()" data-t="nav_location" class="text-2xl text-white font-serif">Ubicación</a>
+        <div class="flex gap-6 mt-8 border-t border-stone-800 pt-8 w-1/2 justify-center">
+            <button onclick="switchLanguage('es')" class="lang-btn text-xl text-white">ES</button>
+            <button onclick="switchLanguage('val')" class="lang-btn text-xl text-white">VAL</button>
+            <button onclick="switchLanguage('en')" class="lang-btn text-xl text-white">EN</button>
+        </div>
+        <a href="tel:+34123456789" data-t="nav_book" class="mt-8 bg-red-800 text-white px-8 py-3 rounded-full text-lg">Reservar</a>
+    </div>
+
+    <!-- 首页幻灯片 -->
+    <header class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div id="hero-slider">
+            <div class="hero-slide active" style="background-image: url('images/hero-bg-1.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('images/hero-bg-2.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('images/hero-bg-3.jpg');"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="relative z-10 text-center px-4 max-w-5xl">
+            <div class="flex justify-center mb-6">
+                <div class="h-[1px] w-12 bg-red-700 self-center"></div>
+                <span class="px-4 text-red-500 text-sm font-bold tracking-[0.3em] uppercase">Valencia · Benimaclet</span>
+                <div class="h-[1px] w-12 bg-red-700 self-center"></div>
+            </div>
+            <h1 id="t-hero_title" class="text-5xl md:text-8xl lg:text-9xl font-bold serif mb-8 text-white drop-shadow-2xl">Izakaya Kora</h1>
+            <p id="t-hero_subtitle" class="text-xl md:text-3xl text-stone-200 font-light tracking-[0.2em] mb-12 italic">Auténtica Taberna Japonesa en Benimaclet</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#location" id="t-hero_cta" class="bg-white text-black px-10 py-4 rounded-sm font-bold hover:bg-red-700 hover:text-white transition duration-500 uppercase tracking-widest text-sm">Ver Ubicación</a>
+                <a href="#menu" class="border border-white/30 backdrop-blur-sm text-white px-10 py-4 rounded-sm font-bold hover:bg-white/10 transition duration-500 uppercase tracking-widest text-sm">Explorar Carta</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 品牌故事 -->
+    <section id="story" class="py-32 px-6 relative overflow-hidden">
+        <div class="absolute top-10 left-10 text-stone-800/20 text-[15rem] serif pointer-events-none select-none">和</div>
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <span id="t-story_tag" class="text-red-700 font-bold tracking-[0.4em] text-sm mb-6 block uppercase">Tradición y Calidez</span>
+            <h2 id="t-story_title" class="text-4xl md:text-5xl serif mb-10 text-white tracking-tight">El Alma de la Cocina Japonesa</h2>
+            <div class="space-y-8 text-stone-400 leading-relaxed text-xl font-light italic">
+                <p id="t-story_p1">Situado en el corazón de Benimaclet, Izakaya Kora es un refugio donde la gastronomía y la hospitalidad se encuentran. Un rincón para desconectar y disfrutar de la esencia de Japón.</p>
+                <p id="t-story_p2">Nuestra cocina celebra los sabores reconfortantes: desde el oden que abraza el alma hasta yakitoris asados con maestría. Cada bocado cuenta una historia de respeto por la tradición.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 精选料理展示 -->
+    <section id="gallery" class="py-32 bg-stone-900/50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+                <div class="max-w-xl">
+                    <h2 id="t-gallery_title" class="text-4xl serif text-white mb-6">Platos Destacados</h2>
+                    <p id="t-gallery_desc" class="text-stone-400 text-lg">Una selección de nuestras creaciones más queridas.</p>
+                </div>
+                <div class="flex gap-4">
+                    <button onclick="scrollGallery(-1)" class="w-14 h-14 rounded-full border border-stone-700 flex items-center justify-center text-white hover:bg-white hover:text-black transition"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button onclick="scrollGallery(1)" class="w-14 h-14 rounded-full border border-stone-700 flex items-center justify-center text-white hover:bg-white hover:text-black transition"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+            <div id="dish-carousel" class="flex gap-8 overflow-x-auto hide-scrollbar snap-x snap-mandatory py-4">
+                <div onclick="openModal('images/dish-1.jpg')" class="snap-center shrink-0 w-[85vw] md:w-[450px] group cursor-zoom-in">
+                    <div class="overflow-hidden rounded-sm aspect-[4/5] bg-stone-800 border border-stone-800">
+                        <img src="images/dish-1.jpg" class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition duration-700" alt="Yakitori">
+                    </div>
+                    <div class="mt-6 flex justify-between items-center"><h4 class="text-xl serif text-white">Yakitori Moriawase</h4><span class="text-red-700 font-bold">01</span></div>
+                </div>
+                <div onclick="openModal('images/dish-2.jpg')" class="snap-center shrink-0 w-[85vw] md:w-[450px] group cursor-zoom-in">
+                    <div class="overflow-hidden rounded-sm aspect-[4/5] bg-stone-800 border border-stone-800">
+                        <img src="images/dish-2.jpg" class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition duration-700" alt="Sashimi">
+                    </div>
+                    <div class="mt-6 flex justify-between items-center"><h4 class="text-xl serif text-white">Kora Special Sashimi</h4><span class="text-red-700 font-bold">02</span></div>
+                </div>
+                <div onclick="openModal('images/dish-3.jpg')" class="snap-center shrink-0 w-[85vw] md:w-[450px] group cursor-zoom-in">
+                    <div class="overflow-hidden rounded-sm aspect-[4/5] bg-stone-800 border border-stone-800">
+                        <img src="images/dish-3.jpg" class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition duration-700" alt="Oden">
+                    </div>
+                    <div class="mt-6 flex justify-between items-center"><h4 class="text-xl serif text-white">House Oden</h4><span class="text-red-700 font-bold">03</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 位置与联系 -->
+    <section id="location" class="py-32 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div class="relative z-10">
+                <h2 id="t-loc_title" class="text-5xl serif text-white mb-12 tracking-tight">Encuéntranos</h2>
+                <div class="space-y-12">
+                    <div class="flex items-start">
+                        <div class="w-14 h-14 rounded-sm border border-red-900/50 flex items-center justify-center text-red-600 shrink-0 mt-1 bg-red-900/5"><i class="fa-solid fa-map-pin text-xl"></i></div>
+                        <div class="ml-8">
+                            <h4 id="t-loc_address" class="text-stone-500 font-bold mb-3 uppercase tracking-widest text-xs">Dirección</h4>
+                            <p class="text-white text-2xl font-light">Carrer de la Pobla Llarga, n 3<br><span class="text-stone-400">46020 València</span></p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="w-14 h-14 rounded-sm border border-red-900/50 flex items-center justify-center text-red-600 shrink-0 mt-1 bg-red-900/5"><i class="fa-solid fa-clock-rotate-left text-xl"></i></div>
+                        <div class="ml-8">
+                            <h4 id="t-loc_hours" class="text-stone-500 font-bold mb-3 uppercase tracking-widest text-xs">Horario</h4>
+                            <p id="t-loc_hours_val" class="text-white text-2xl font-light">Mar - Dom: 19:30 - 23:30<br><span class="text-red-900/60 text-lg italic">Lunes cerrado</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-16">
+                    <a href="https://maps.google.com/?q=Carrer+de+la+Pobla+Llarga,+n+3,+Valencia" target="_blank" class="inline-flex items-center bg-red-800 text-white px-10 py-5 rounded-sm hover:bg-red-700 transition-all font-bold tracking-widest text-sm uppercase">
+                        <i class="fa-brands fa-google mr-4 text-xl"></i> <span id="t-loc_cta">Abrir en Google Maps</span>
+                    </a>
+                </div>
+            </div>
+            <div class="h-[500px] bg-stone-800 rounded-sm overflow-hidden relative shadow-2xl border border-stone-700/50">
+                <img src="images/map-placeholder.jpg" class="w-full h-full object-cover opacity-50" alt="Ubicación Izakaya Kora">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"><i class="fa-solid fa-location-dot text-6xl text-red-600"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 模态框 -->
+    <div id="global-modal" class="hidden fixed inset-0 z-[100] bg-black/95 items-center justify-center p-4 transition-all opacity-0" onclick="closeModal()">
+        <button class="absolute top-8 right-8 text-white/50 hover:text-white text-4xl"><i class="fa-solid fa-xmark"></i></button>
+        <img id="modal-img" src="" class="max-w-full max-h-[90vh] rounded-sm" alt="Zoomed View">
+    </div>
+
+    <!-- 底部 -->
+    <footer class="bg-[#0c0a09] py-20 text-center border-t border-stone-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-white text-3xl serif mb-8">Izakaya Kora</div>
+            <div class="flex justify-center gap-6 text-stone-500 mb-12">
+                <a href="#" class="hover:text-red-700 transition"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="hover:text-red-700 transition"><i class="fa-brands fa-facebook"></i></a>
+            </div>
+            <p class="text-stone-700 text-xs tracking-widest uppercase">&copy; 2026 Izakaya Kora · Valencia · Made with Heart</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                setTimeout(() => menu.classList.add('active'), 10);
+                icon.classList.replace('fa-bars', 'fa-xmark');
+                document.body.style.overflow = 'hidden';
+            } else {
+                menu.classList.remove('active');
+                setTimeout(() => menu.classList.add('hidden'), 300);
+                icon.classList.replace('fa-xmark', 'fa-bars');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        function nextSlide() {
+            if (slides.length === 0) return;
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+             if (slides.length > 0) setInterval(nextSlide, 5000);
+        });
+
+        function scrollGallery(direction) {
+            const carousel = document.getElementById('dish-carousel');
+            carousel.scrollBy({ left: direction * 400, behavior: 'smooth' });
+        }
+
+        function openModal(src) {
+            const modal = document.getElementById('global-modal');
+            const img = document.getElementById('modal-img');
+            img.src = src;
+            modal.classList.remove('hidden');
+            setTimeout(() => { modal.classList.add('active'); modal.style.opacity = '1'; }, 10);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('global-modal');
+            modal.style.opacity = '0';
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        }
+
+        window.onload = () => switchLanguage('es');
+    </script>
+</body>
+</html>
