@@ -3,405 +3,422 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO 优化 -->
-    <title>Izakaya Kora | Taberna Japonesa en Valencia (Benimaclet)</title>
-    <meta name="description" content="Descubre la auténtica experiencia de una taberna japonesa en Valencia. Yakitori, Oden y el mejor ambiente tradicional en el corazón de Benimaclet.">
-    <meta name="keywords" content="Izakaya Valencia, Taberna Japonesa, Restaurante Japonés Benimaclet, Yakitori Valencia, Cena Japonesa">
-    
-    <!-- 社交媒体分享预览 (Open Graph) -->
-    <meta property="og:title" content="Izakaya Kora - Taberna Japonesa">
-    <meta property="og:description" content="Tradición y calidez en cada plato. Ven a visitarnos en Benimaclet.">
-    <meta property="og:image" content="images/og-share.jpg">
-    <meta property="og:type" content="website">
-
-    <!-- 网站图标 -->
-    <link rel="icon" type="image/png" href="images/favicon.png">
-
+    <title>Izakaya Koryo Valencia | Mar y Tradición</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://unpkg.com/scrollreveal"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700&family=Noto+Sans+SC:wght@300;400;500&display=swap');
         
         :root {
-            --japanese-red: #bc2424;
-            --deep-stone: #1c1917;
+            --indigo-blue: #1e293b;
+            --ocean-blue: #0f172a;
+            --sea-white: #f8fafc;
+            --accent-blue: #38bdf8;
         }
 
         body {
             font-family: 'Noto Sans SC', sans-serif;
-            background-color: var(--deep-stone); 
-            color: #e7e5e4; 
+            background-color: var(--ocean-blue); 
+            color: var(--sea-white); 
             overflow-x: hidden;
         }
         .serif {
             font-family: 'Noto Serif SC', serif;
         }
         
-        .japanese-pattern {
-            background-image: url("https://www.transparenttextures.com/patterns/dark-matter.png");
+        .seigaiha-pattern {
+            background-image: radial-gradient(circle at 100% 150%, var(--indigo-blue) 24%, var(--ocean-blue) 24%, var(--ocean-blue) 28%, var(--indigo-blue) 28%, var(--indigo-blue) 36%, var(--ocean-blue) 36%, var(--ocean-blue) 40%, transparent 40%, transparent),
+                              radial-gradient(circle at 0% 150%, var(--indigo-blue) 24%, var(--ocean-blue) 24%, var(--ocean-blue) 28%, var(--indigo-blue) 28%, var(--indigo-blue) 36%, var(--ocean-blue) 36%, var(--ocean-blue) 40%, transparent 40%, transparent),
+                              radial-gradient(circle at 50% 100%, var(--ocean-blue) 10%, var(--indigo-blue) 10%, var(--indigo-blue) 23%, var(--ocean-blue) 23%, var(--ocean-blue) 30%, var(--indigo-blue) 30%, var(--indigo-blue) 43%, var(--ocean-blue) 43%, var(--ocean-blue) 50%, transparent 50%, transparent),
+                              radial-gradient(circle at 100% 50%, var(--ocean-blue) 5%, var(--indigo-blue) 5%, var(--indigo-blue) 15%, var(--ocean-blue) 15%, var(--ocean-blue) 20%, var(--indigo-blue) 20%, var(--indigo-blue) 29%, var(--ocean-blue) 29%, var(--ocean-blue) 34%, transparent 34%, transparent),
+                              radial-gradient(circle at 0% 50%, var(--ocean-blue) 5%, var(--indigo-blue) 5%, var(--indigo-blue) 15%, var(--ocean-blue) 15%, var(--ocean-blue) 20%, var(--indigo-blue) 20%, var(--indigo-blue) 29%, var(--ocean-blue) 29%, var(--ocean-blue) 34%, transparent 34%, transparent);
+            background-size: 100px 50px;
             background-attachment: fixed;
+            opacity: 0.15;
+            position: fixed;
+            inset: 0;
+            z-index: -1;
         }
 
-        .lantern-glow {
-            box-shadow: 0 0 20px rgba(188, 36, 36, 0.5);
+        .glass-morphism {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo-diamond {
+            width: 45px;
+            height: 45px;
+            background: var(--sea-white);
+            transform: rotate(45deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+        }
+        .logo-diamond span {
+            transform: rotate(-45deg);
+            color: var(--ocean-blue);
+            font-weight: 900;
         }
 
         #hero-slider {
             position: absolute;
             inset: 0;
             z-index: 0;
-            background-color: #2a0a0a;
+            background-color: var(--ocean-blue);
         }
         .hero-slide {
-            transition: opacity 1.5s ease-in-out;
+            transition: opacity 2s ease-in-out;
             position: absolute;
             inset: 0;
             opacity: 0;
             background-size: cover;
             background-position: center;
-            z-index: 1;
         }
-        .hero-slide.active {
-            opacity: 1;
-            z-index: 2;
-        }
+        .hero-slide.active { opacity: 1; }
         .hero-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.3), #1c1917);
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.2), var(--ocean-blue));
             z-index: 3;
-            pointer-events: none;
         }
 
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        #global-modal.active, #mobile-menu.active {
-            display: flex;
-        }
-        
-        /* 平滑滚动 */
-        html {
-            scroll-behavior: smooth;
-        }
+        #mobile-menu.active, #global-modal.active { display: flex; }
     </style>
 </head>
-<body class="japanese-pattern selection:bg-red-900 selection:text-white">
+<body class="selection:bg-sky-900 selection:text-white">
+
+    <div class="seigaiha-pattern"></div>
 
     <!-- 语言配置 -->
     <script>
         const translations = {
             es: {
-                nav_about: "Sobre Nosotros",
-                nav_menu: "Carta",
-                nav_gallery: "Especialidades",
-                nav_location: "Ubicación",
-                nav_book: "Reservar",
-                hero_title: "Izakaya Kora",
-                hero_subtitle: "Auténtica Taberna Japonesa en Benimaclet",
-                hero_cta: "Ver Ubicación",
-                story_tag: "TRADICIÓN Y CALIDEZ",
-                story_title: "El Alma de la Cocina Japonesa",
-                story_p1: "Situado en el corazón de Benimaclet, Izakaya Kora es un refugio donde la gastronomía y la hospitalidad se encuentran. Un rincón para desconectar y disfrutar de la esencia de Japón.",
-                story_p2: "Nuestra cocina celebra los sabores reconfortantes: desde el oden que abraza el alma hasta yakitoris asados con maestría. Cada bocado cuenta una historia de respeto por la tradición.",
+                nav_story: "Historia", nav_menu: "Menú", nav_gallery: "Especiales", nav_loc: "Contacto", nav_btn: "Reservar",
+                hero_title: "鮮やかな味", hero_sub: "Autenticidad japonesa envuelta en brisa marina.",
+                story_title: "Nuestra Esencia", 
+                story_p1: "Taberna Koreana y Japonesa en el barrio de Benimaclet, en la ciudad de Valencia. Nuestro objetivo es ofrecer una cocina tradicional casera como me enseñó mi Madre y mi familia.",
+                story_p2: "No pretendemos ser un restaurante asiático, solo una casa de comidas koreano-japones con nuestro propio style. Fieles a nuestros ancestros.",
+                gallery_title: "Sugerencias del Chef",
                 menu_title: "Nuestra Carta",
-                menu_subtitle: "Haz clic para ampliar los detalles",
-                gallery_title: "Platos Destacados",
-                gallery_desc: "Una selección de nuestras creaciones más queridas. Cocina honesta, ingredientes locales y técnicas ancestrales.",
-                gallery_item1: "Brasa Tradicional",
-                gallery_item2: "Recetas Secretas",
-                gallery_item3: "Sabor de Temporada",
-                loc_title: "Encuéntranos",
-                loc_address: "Dirección",
-                loc_hours: "Horario",
-                loc_hours_val: "Mar - Dom: 19:30 - 23:30 (Lunes cerrado)",
-                loc_cta: "Abrir en Google Maps"
+                loc_title: "Visitarnos", loc_btn: "Llamar para Reservar"
             },
             val: {
-                nav_about: "Sobre Nosaltres",
-                nav_menu: "Carta",
-                nav_gallery: "Especialitats",
-                nav_location: "Ubicació",
-                nav_book: "Reservar",
-                hero_title: "Izakaya Kora",
-                hero_subtitle: "Autèntica Taberna Japonesa a Benimaclet",
-                hero_cta: "Veure Ubicació",
-                story_tag: "TRADICIÓ I CALIDESA",
-                story_title: "L'Ànima de la Cuina Japonesa",
-                story_p1: "Situat al cor de Benimaclet, Izakaya Kora és un refugi on la gastronomia i l'hospitalitat es troben. Un racó per desconnectar i gaudir de l'essència del Japó.",
-                story_p2: "La nostra cuina celebra els sabors reconfortants: des de l'oden que abraça l'ànima fins a yakitoris rostits amb maestria. Cada mossegada conta una història de respecte per la tradició.",
+                nav_story: "Història", nav_menu: "Menú", nav_gallery: "Especialitats", nav_loc: "Contacte", nav_btn: "Reservar",
+                hero_title: "鮮やかな味", hero_sub: "Autenticitat japonesa envoltada de brisa marina.",
+                story_title: "La Nostra Essència", 
+                story_p1: "Taberna Coreana i Japonesa al barri de Benimaclet, València. El nostre objectiu és oferir cuina tradicional casolana com em va ensenyar la meua Mare.",
+                story_p2: "No pretenem ser un restaurant asiàtic, sols una casa de menjars coreà-japonés amb estil propi. Fidels als nostres avantpassats.",
+                gallery_title: "Suggeriments del Xef",
                 menu_title: "La Nostra Carta",
-                menu_subtitle: "Fes clic per ampliar els detalls",
-                gallery_title: "Plats Destacats",
-                gallery_desc: "Una selección de les nostres creacions més estimades. Cuina honesta, ingredients locals i tècniques ancestrals.",
-                gallery_item1: "Brasa Tradicional",
-                gallery_item2: "Receptes Secretes",
-                gallery_item3: "Sabor de Temporada",
-                loc_title: "Troba'ns",
-                loc_address: "Adreça",
-                loc_hours: "Horari",
-                loc_hours_val: "Dim - Dum: 19:30 - 23:30 (Dilluns tancat)",
-                loc_cta: "Obrir en Google Maps"
+                loc_title: "Visita'ns", loc_btn: "Crida per Reservar"
             },
             en: {
-                nav_about: "About Us",
-                nav_menu: "Menu",
-                nav_gallery: "Specials",
-                nav_location: "Location",
-                nav_book: "Book",
-                hero_title: "Izakaya Kora",
-                hero_subtitle: "Authentic Japanese Tavern in Benimaclet",
-                hero_cta: "View Location",
-                story_tag: "TRADITION & WARMTH",
-                story_title: "The Soul of Japanese Cuisine",
-                story_p1: "Located in the heart of Benimaclet, Izakaya Kora is a sanctuary where gastronomy and hospitality meet. A corner to disconnect and enjoy the essence of Japan.",
-                story_p2: "Our kitchen celebrates comfort flavors: from soul-warming oden to masterfully grilled yakitori. Every bite tells a story of respect for tradition.",
+                nav_story: "Story", nav_menu: "Menu", nav_gallery: "Specials", nav_loc: "Contact", nav_btn: "Book Now",
+                hero_title: "Vivid Taste", hero_sub: "Japanese authenticity wrapped in sea breeze.",
+                story_title: "Our Essence", 
+                story_p1: "Korean and Japanese Tavern in Benimaclet, Valencia. Our goal is to offer home-cooked traditional cuisine as my Mother and family taught me.",
+                story_p2: "We don't pretend to be an Asian restaurant, just a Korean-Japanese food house with our own style. Faithful to our ancestors.",
+                gallery_title: "Chef's Suggestions",
                 menu_title: "Our Menu",
-                menu_subtitle: "Click to enlarge details",
-                gallery_title: "Signature Dishes",
-                gallery_desc: "A selection of our most beloved creations. Honest cooking, local ingredients, and ancestral techniques.",
-                gallery_item1: "Traditional Grill",
-                gallery_item2: "Secret Recipes",
-                gallery_item3: "Seasonal Flavors",
-                loc_title: "Find Us",
-                loc_address: "Address",
-                loc_hours: "Opening Hours",
-                loc_hours_val: "Tue - Sun: 19:30 - 23:30 (Closed on Monday)",
-                loc_cta: "Open in Google Maps"
+                loc_title: "Visit Us", loc_btn: "Call to Book"
             }
         };
 
         function switchLanguage(lang) {
-            document.documentElement.lang = lang;
             const t = translations[lang];
+            document.getElementById('t-nav-story').innerText = t.nav_story;
+            document.getElementById('t-nav-menu').innerText = t.nav_menu;
+            document.getElementById('t-nav-gallery').innerText = t.nav_gallery;
+            document.getElementById('t-nav-loc').innerText = t.nav_loc;
+            document.querySelectorAll('.t-nav-btn').forEach(el => el.innerText = t.nav_btn);
             
-            Object.keys(t).forEach(key => {
-                const el = document.getElementById(`t-${key}`);
-                if (el) el.innerText = t[key];
-            });
-            
-            document.querySelectorAll('[data-t]').forEach(el => {
-                const key = el.getAttribute('data-t');
-                if (t[key]) el.innerText = t[key];
-            });
-            
+            document.getElementById('t-hero-title').innerText = t.hero_title;
+            document.getElementById('t-hero-sub').innerText = t.hero_sub;
+            document.getElementById('t-story-title').innerText = t.story_title;
+            document.getElementById('t-story-p1').innerText = t.story_p1;
+            document.getElementById('t-story-p2').innerText = t.story_p2;
+            document.getElementById('t-gallery-title').innerText = t.gallery_title;
+            document.getElementById('t-menu-title').innerText = t.menu_title;
+            document.getElementById('t-loc-title').innerText = t.loc_title;
+            document.getElementById('t-loc-btn').innerText = t.loc_btn;
+
             document.querySelectorAll('.lang-btn').forEach(btn => {
-                if(btn.innerText.toLowerCase() === lang.toLowerCase() || (lang === 'val' && btn.innerText === 'VAL')) {
-                    btn.classList.add('text-red-500', 'font-bold');
-                    btn.classList.remove('text-white');
+                if (btn.dataset.lang === lang) {
+                    btn.classList.add('text-sky-400', 'font-bold');
+                    btn.classList.remove('text-opacity-50', 'text-white');
                 } else {
-                    btn.classList.remove('text-red-500', 'font-bold');
-                    btn.classList.add('text-white');
+                    btn.classList.remove('text-sky-400', 'font-bold');
+                    btn.classList.add('text-white', 'text-opacity-50');
                 }
             });
         }
     </script>
 
     <!-- 导航栏 -->
-    <nav class="fixed w-full z-50 bg-[#1c1917]/95 backdrop-blur-md border-b border-stone-800">
+    <nav class="fixed w-full z-50 glass-morphism border-b border-white/5">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-3 z-50">
-                <div class="w-10 h-10 bg-red-700 rounded-sm flex items-center justify-center text-white font-bold lantern-glow rotate-45">
-                    <span class="-rotate-45">酒</span>
-                </div>
-                <span class="text-2xl font-bold serif tracking-tighter text-white">Izakaya Kora</span>
+            <div class="flex items-center gap-4 z-50">
+                <div class="logo-diamond"><span>魚</span></div>
+                <span class="text-2xl font-bold serif tracking-wider text-white">Izakaya Koryo Valencia</span>
             </div>
             
-            <div class="hidden lg:flex space-x-8 text-xs font-bold tracking-widest text-stone-400 items-center uppercase">
-                <a href="#story" data-t="nav_about" class="hover:text-red-500 transition">Sobre Nosotros</a>
-                <a href="#menu" data-t="nav_menu" class="hover:text-red-500 transition">Carta</a>
-                <a href="#gallery" data-t="nav_gallery" class="hover:text-red-500 transition">Especialidades</a>
-                <a href="#location" data-t="nav_location" class="hover:text-red-500 transition">Ubicación</a>
+            <div class="hidden lg:flex space-x-8 text-xs font-bold tracking-widest text-slate-300 items-center uppercase">
+                <a href="#story" id="t-nav-story" class="hover:text-sky-400 transition">Historia</a>
+                <a href="#menu" id="t-nav-menu" class="hover:text-sky-400 transition">Menú</a>
+                <a href="#gallery" id="t-nav-gallery" class="hover:text-sky-400 transition">Especiales</a>
+                <a href="#location" id="t-nav-loc" class="hover:text-sky-400 transition">Contacto</a>
                 
-                <div class="flex items-center gap-3 ml-4 border-l border-stone-800 pl-6">
-                    <button onclick="switchLanguage('es')" class="lang-btn hover:text-red-500 transition text-white">ES</button>
-                    <button onclick="switchLanguage('val')" class="lang-btn hover:text-red-500 transition text-white">VAL</button>
-                    <button onclick="switchLanguage('en')" class="lang-btn hover:text-red-500 transition text-white">EN</button>
+                <div class="flex items-center gap-3 ml-4 border-l border-white/10 pl-6">
+                    <button onclick="switchLanguage('es')" data-lang="es" class="lang-btn hover:text-sky-400 transition text-sky-400 font-bold">ES</button>
+                    <button onclick="switchLanguage('val')" data-lang="val" class="lang-btn hover:text-sky-400 transition text-white text-opacity-50">VAL</button>
+                    <button onclick="switchLanguage('en')" data-lang="en" class="lang-btn hover:text-sky-400 transition text-white text-opacity-50">EN</button>
                 </div>
                 
-                <a href="tel:+34123456789" data-t="nav_book" class="bg-red-800 hover:bg-red-700 text-white px-6 py-2.5 rounded-sm text-xs font-bold transition uppercase tracking-widest">
+                <a href="tel:604151354" class="t-nav-btn bg-sky-600 hover:bg-sky-500 text-white px-6 py-2.5 rounded-sm transition shadow-lg">
                     Reservar
                 </a>
             </div>
 
             <button onclick="toggleMobileMenu()" class="lg:hidden z-50 text-white text-2xl">
-                <i class="fa-solid fa-bars" id="menu-icon"></i>
+                <i class="fa-solid fa-bars-staggered" id="menu-icon"></i>
             </button>
         </div>
     </nav>
 
-    <!-- 移动端菜单层 -->
-    <div id="mobile-menu" class="hidden fixed inset-0 bg-[#1c1917] z-40 flex-col items-center justify-center space-y-8 transition-all duration-300">
-        <a href="#story" onclick="toggleMobileMenu()" data-t="nav_about" class="text-2xl text-white font-serif">Sobre Nosotros</a>
-        <a href="#menu" onclick="toggleMobileMenu()" data-t="nav_menu" class="text-2xl text-white font-serif">Carta</a>
-        <a href="#gallery" onclick="toggleMobileMenu()" data-t="nav_gallery" class="text-2xl text-white font-serif">Especialidades</a>
-        <a href="#location" onclick="toggleMobileMenu()" data-t="nav_location" class="text-2xl text-white font-serif">Ubicación</a>
-        <div class="flex gap-6 mt-8 border-t border-stone-800 pt-8 w-1/2 justify-center">
-            <button onclick="switchLanguage('es')" class="lang-btn text-xl text-white">ES</button>
-            <button onclick="switchLanguage('val')" class="lang-btn text-xl text-white">VAL</button>
-            <button onclick="switchLanguage('en')" class="lang-btn text-xl text-white">EN</button>
+    <!-- 移动端菜单 -->
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-40 flex-col items-center justify-center space-y-10 transition-all">
+        <a href="#story" onclick="toggleMobileMenu()" class="text-3xl text-white font-serif">Historia</a>
+        <a href="#menu" onclick="toggleMobileMenu()" class="text-3xl text-white font-serif">Menú</a>
+        <a href="#gallery" onclick="toggleMobileMenu()" class="text-3xl text-white font-serif">Especiales</a>
+        <a href="#location" onclick="toggleMobileMenu()" class="text-3xl text-white font-serif">Contacto</a>
+        <div class="flex gap-6">
+            <button onclick="switchLanguage('es'); toggleMobileMenu()" class="text-xl text-white hover:text-sky-400">ES</button>
+            <button onclick="switchLanguage('val'); toggleMobileMenu()" class="text-xl text-white hover:text-sky-400">VAL</button>
+            <button onclick="switchLanguage('en'); toggleMobileMenu()" class="text-xl text-white hover:text-sky-400">EN</button>
         </div>
-        <a href="tel:+34123456789" data-t="nav_book" class="mt-8 bg-red-800 text-white px-8 py-3 rounded-full text-lg">Reservar</a>
+        <a href="tel:604151354" class="t-nav-btn bg-sky-600 text-white px-10 py-4 rounded-full text-lg">Reservar</a>
     </div>
 
-    <!-- 首页幻灯片 -->
+    <!-- 首页 Hero -->
     <header class="relative h-screen flex items-center justify-center overflow-hidden">
         <div id="hero-slider">
             <div class="hero-slide active" style="background-image: url('images/hero-bg-1.jpg');"></div>
             <div class="hero-slide" style="background-image: url('images/hero-bg-2.jpg');"></div>
-            <div class="hero-slide" style="background-image: url('images/hero-bg-3.jpg');"></div>
         </div>
         <div class="hero-overlay"></div>
-        <div class="relative z-10 text-center px-4 max-w-5xl">
-            <div class="flex justify-center mb-6">
-                <div class="h-[1px] w-12 bg-red-700 self-center"></div>
-                <span class="px-4 text-red-500 text-sm font-bold tracking-[0.3em] uppercase">Valencia · Benimaclet</span>
-                <div class="h-[1px] w-12 bg-red-700 self-center"></div>
-            </div>
-            <h1 id="t-hero_title" class="text-5xl md:text-8xl lg:text-9xl font-bold serif mb-8 text-white drop-shadow-2xl">Izakaya Kora</h1>
-            <p id="t-hero_subtitle" class="text-xl md:text-3xl text-stone-200 font-light tracking-[0.2em] mb-12 italic">Auténtica Taberna Japonesa en Benimaclet</p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <a href="#location" id="t-hero_cta" class="bg-white text-black px-10 py-4 rounded-sm font-bold hover:bg-red-700 hover:text-white transition duration-500 uppercase tracking-widest text-sm">Ver Ubicación</a>
-                <a href="#menu" class="border border-white/30 backdrop-blur-sm text-white px-10 py-4 rounded-sm font-bold hover:bg-white/10 transition duration-500 uppercase tracking-widest text-sm">Explorar Carta</a>
+        <div class="relative z-10 text-center px-4 reveal-hero">
+            <span class="text-sky-400 text-sm font-bold tracking-[0.5em] uppercase mb-4 block">Izakaya Koryo Valencia · Mar y Tradición</span>
+            <h1 id="t-hero-title" class="text-6xl md:text-9xl font-bold serif mb-8 text-white">鮮やかな味</h1>
+            <p id="t-hero-sub" class="text-xl md:text-2xl text-slate-300 font-light tracking-widest mb-12 max-w-2xl mx-auto">
+                Autenticidad japonesa envuelta en brisa marina.
+            </p>
+            <div class="flex flex-wrap justify-center gap-6">
+                <a href="#menu" class="bg-white text-slate-900 px-12 py-4 rounded-sm font-bold hover:bg-sky-400 hover:text-white transition duration-500 uppercase tracking-widest text-xs">Explorar Menú</a>
+                <a href="tel:604151354" class="bg-sky-600 text-white px-12 py-4 rounded-sm font-bold hover:bg-sky-500 transition duration-500 uppercase tracking-widest text-xs shadow-xl">Reservar ahora</a>
             </div>
         </div>
     </header>
 
     <!-- 品牌故事 -->
-    <section id="story" class="py-32 px-6 relative overflow-hidden">
-        <div class="absolute top-10 left-10 text-stone-800/20 text-[15rem] serif pointer-events-none select-none">和</div>
-        <div class="max-w-4xl mx-auto text-center relative z-10">
-            <span id="t-story_tag" class="text-red-700 font-bold tracking-[0.4em] text-sm mb-6 block uppercase">Tradición y Calidez</span>
-            <h2 id="t-story_title" class="text-4xl md:text-5xl serif mb-10 text-white tracking-tight">El Alma de la Cocina Japonesa</h2>
-            <div class="space-y-8 text-stone-400 leading-relaxed text-xl font-light italic">
-                <p id="t-story_p1">Situado en el corazón de Benimaclet, Izakaya Kora es un refugio donde la gastronomía y la hospitalidad se encuentran. Un rincón para desconectar y disfrutar de la esencia de Japón.</p>
-                <p id="t-story_p2">Nuestra cocina celebra los sabores reconfortantes: desde el oden que abraza el alma hasta yakitoris asados con maestría. Cada bocado cuenta una historia de respeto por la tradición.</p>
+    <section id="story" class="py-32 px-6 relative">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+            <div class="reveal-left">
+                <div class="relative">
+                    <div class="absolute -top-4 -left-4 w-full h-full border border-sky-900/30"></div>
+                    <img src="images/story-family.jpg" class="relative z-10 rounded-sm shadow-2xl w-full h-[500px] object-cover" alt="Nuestra Historia">
+                </div>
+            </div>
+            <div class="reveal-right">
+                <span class="text-sky-500 font-bold tracking-[0.4em] text-sm mb-6 block uppercase">Benimaclet, Valencia</span>
+                <h2 id="t-story-title" class="text-4xl md:text-5xl serif mb-10 text-white leading-tight">Nuestra Esencia</h2>
+                <div class="space-y-6 text-slate-300 text-lg font-light leading-relaxed">
+                    <p id="t-story-p1">Taberna Koreana y Japonesa en el barrio de Benimaclet, en la ciudad de Valencia en Comunidad Valenciana, ESPAÑA. Nuestro objetivo es ofrecer una cocina tradicional casera como me enseñó mi Madre y mi familia.</p>
+                    <p id="t-story-p2">No pretendemos ser un restaurante asiático, solo una casa de comidas koreano-japones con nuestro propio estilo. No deseamos que nos comparen con nadie, somos como somos y queremos ser naturales y faciles a nuestros ancestros.</p>
+                    <p class="text-sky-400 italic">"Bienvenidos todos a esta casa, intentaremos atenderos de la mejor manera que podamos. Gracias a todos por vuestro tiempo y cordialidad."</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 精选料理展示 -->
-    <section id="gallery" class="py-32 bg-stone-900/50">
+    <!-- 特色菜品 -->
+    <section id="gallery" class="py-32 bg-slate-900/20">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-                <div class="max-w-xl">
-                    <h2 id="t-gallery_title" class="text-4xl serif text-white mb-6">Platos Destacados</h2>
-                    <p id="t-gallery_desc" class="text-stone-400 text-lg">Una selección de nuestras creaciones más queridas.</p>
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 reveal-bottom">
+                <div>
+                    <h2 id="t-gallery-title" class="text-4xl md:text-5xl serif text-white mb-4">Sugerencias del Chef</h2>
+                    <div class="w-24 h-1 bg-sky-500"></div>
                 </div>
                 <div class="flex gap-4">
-                    <button onclick="scrollGallery(-1)" class="w-14 h-14 rounded-full border border-stone-700 flex items-center justify-center text-white hover:bg-white hover:text-black transition"><i class="fa-solid fa-chevron-left"></i></button>
-                    <button onclick="scrollGallery(1)" class="w-14 h-14 rounded-full border border-stone-700 flex items-center justify-center text-white hover:bg-white hover:text-black transition"><i class="fa-solid fa-chevron-right"></i></button>
+                    <button onclick="scrollSection('dish-carousel', -1)" class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button onclick="scrollSection('dish-carousel', 1)" class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
-            <div id="dish-carousel" class="flex gap-8 overflow-x-auto hide-scrollbar snap-x snap-mandatory py-4">
-                <div onclick="openModal('images/dish-1.jpg')" class="snap-center shrink-0 w-[85vw] md:w-[450px] group cursor-zoom-in">
-                    <div class="overflow-hidden rounded-sm aspect-[4/5] bg-stone-800 border border-stone-800">
-                        <img src="images/dish-1.jpg" class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition duration-700" alt="Yakitori">
-                    </div>
-                    <div class="mt-6 flex justify-between items-center"><h4 class="text-xl serif text-white">Yakitori Moriawase</h4><span class="text-red-700 font-bold">01</span></div>
-                </div>
-                <div onclick="openModal('images/dish-2.jpg')" class="snap-center shrink-0 w-[85vw] md:w-[450px] group cursor-zoom-in">
-                    <div class="overflow-hidden rounded-sm aspect-[4/5] bg-stone-800 border border-stone-800">
-                        <img src="images/dish-2.jpg" class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition duration-700" alt="Sashimi">
-                    </div>
-                    <div class="mt-6 flex justify-between items-center"><h4 class="text-xl serif text-white">Kora Special Sashimi</h4><span class="text-red-700 font-bold">02</span></div>
-                </div>
-                <div onclick="openModal('images/dish-3.jpg')" class="snap-center shrink-0 w-[85vw] md:w-[450px] group cursor-zoom-in">
-                    <div class="overflow-hidden rounded-sm aspect-[4/5] bg-stone-800 border border-stone-800">
-                        <img src="images/dish-3.jpg" class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition duration-700" alt="Oden">
-                    </div>
-                    <div class="mt-6 flex justify-between items-center"><h4 class="text-xl serif text-white">House Oden</h4><span class="text-red-700 font-bold">03</span></div>
-                </div>
+            <div id="dish-carousel" class="flex gap-8 overflow-x-auto hide-scrollbar snap-x snap-mandatory py-4 reveal-bottom">
+                <script>
+                    const dishes = [
+                        {img: 'images/dish-1.jpg', title: 'Gyudon', desc: 'La combinación perfecta de carne y cebolla'},
+                        {img: 'images/dish-2.jpg', title: 'Takoyaki y Gyoza', desc: 'Deliciosos snacks para acompañar bebidas.'},
+                        {img: 'images/dish-3.jpg', title: 'Arroz con tankatsu', desc: 'Tazón de arroz con chuletas de cerdo japonesas'},
+                        {img: 'images/dish-4.jpg', title: 'Bibimbap', desc: 'Bibimbap coreano en olla de piedra'},
+                        {img: 'images/dish-5.jpg', title: 'Jajangmyeon', desc: 'Deliciosos fideos con salsa de carne de Asia (sin sopa)'},
+                        {img: 'images/dish-6.jpg', title: 'Tteokbokki', desc: 'El encuentro intenso entre la salsa picante coreana y el tteok'}
+                    ];
+                    dishes.forEach(dish => {
+                        document.write(`
+                            <div class="glass-morphism rounded-sm overflow-hidden group snap-center shrink-0 w-full md:w-[calc(33.333%-22px)]" onclick="openModal('${dish.img}')">
+                                <div class="overflow-hidden h-72 cursor-zoom-in">
+                                    <img src="${dish.img}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="${dish.title}">
+                                </div>
+                                <div class="p-8">
+                                    <h4 class="text-2xl serif text-white mb-2">${dish.title}</h4>
+                                    <p class="text-slate-400 text-sm font-light italic">${dish.desc}</p>
+                                    <div class="mt-6 flex justify-end items-center">
+                                        <button class="text-xs uppercase tracking-widest text-white border-b border-sky-500 pb-1">Ver más</button>
+                                    </div>
+                                </div>
+                            </div>
+                        `);
+                    });
+                </script>
             </div>
         </div>
     </section>
 
-    <!-- 位置与联系 -->
-    <section id="location" class="py-32 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <div class="relative z-10">
-                <h2 id="t-loc_title" class="text-5xl serif text-white mb-12 tracking-tight">Encuéntranos</h2>
-                <div class="space-y-12">
-                    <div class="flex items-start">
-                        <div class="w-14 h-14 rounded-sm border border-red-900/50 flex items-center justify-center text-red-600 shrink-0 mt-1 bg-red-900/5"><i class="fa-solid fa-map-pin text-xl"></i></div>
-                        <div class="ml-8">
-                            <h4 id="t-loc_address" class="text-stone-500 font-bold mb-3 uppercase tracking-widest text-xs">Dirección</h4>
-                            <p class="text-white text-2xl font-light">Carrer de la Pobla Llarga, n 3<br><span class="text-stone-400">46020 València</span></p>
-                        </div>
+    <!-- 菜单展示 -->
+    <section id="menu" class="py-32 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 reveal-bottom">
+                <div>
+                    <h2 id="t-menu-title" class="text-4xl md:text-5xl serif text-white mb-4">Nuestra Carta</h2>
+                    <p class="text-slate-400">Haz clic en las páginas para ampliar</p>
+                </div>
+                <div class="flex gap-4">
+                    <button onclick="scrollSection('menu-carousel', -1)" class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button onclick="scrollSection('menu-carousel', 1)" class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+            <div id="menu-carousel" class="flex gap-6 overflow-x-auto hide-scrollbar snap-x snap-mandatory py-4 reveal-bottom">
+                <script>
+                    for(let i=1; i<=6; i++) {
+                        document.write(`
+                            <div onclick="openModal('images/menu-page-${i}.jpg')" class="snap-center shrink-0 w-[80vw] md:w-[350px] group cursor-zoom-in">
+                                <div class="glass-morphism p-2 rounded-sm h-full hover:border-sky-500 transition duration-300">
+                                    <img src="images/menu-page-${i}.jpg" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-500" alt="Menu Page ${i}">
+                                </div>
+                                <div class="text-center mt-4 text-xs tracking-widest text-slate-500">PÁGINA 0${i}</div>
+                            </div>
+                        `);
+                    }
+                </script>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系区域 -->
+    <section id="location" class="py-32 bg-slate-900/40">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16">
+            <div class="reveal-left">
+                <h2 id="t-loc-title" class="text-5xl serif text-white mb-12">Visitarnos</h2>
+                <div class="space-y-10">
+                    <div class="flex items-center gap-6">
+                        <div class="w-12 h-12 bg-sky-900/30 flex items-center justify-center text-sky-400 border border-sky-500/20"><i class="fa-solid fa-location-dot"></i></div>
+                        <p class="text-xl text-slate-300">Carrer de la Pobla Llarga, 3, 46020 Valencia</p>
                     </div>
-                    <div class="flex items-start">
-                        <div class="w-14 h-14 rounded-sm border border-red-900/50 flex items-center justify-center text-red-600 shrink-0 mt-1 bg-red-900/5"><i class="fa-solid fa-clock-rotate-left text-xl"></i></div>
-                        <div class="ml-8">
-                            <h4 id="t-loc_hours" class="text-stone-500 font-bold mb-3 uppercase tracking-widest text-xs">Horario</h4>
-                            <p id="t-loc_hours_val" class="text-white text-2xl font-light">Mar - Dom: 19:30 - 23:30<br><span class="text-red-900/60 text-lg italic">Lunes cerrado</span></p>
-                        </div>
+                    <div class="flex items-center gap-6">
+                        <div class="w-12 h-12 bg-sky-900/30 flex items-center justify-center text-sky-400 border border-sky-500/20"><i class="fa-solid fa-phone"></i></div>
+                        <p class="text-xl text-slate-300">+34 604 151 354</p>
+                    </div>
+                    <div class="flex items-center gap-6">
+                        <div class="w-12 h-12 bg-sky-900/30 flex items-center justify-center text-sky-400 border border-sky-500/20"><i class="fa-solid fa-clock"></i></div>
+                        <p class="text-xl text-slate-300">Horario: Martes a Domingo (13:30 - 16:30, 20:00 - 00:00)</p>
                     </div>
                 </div>
                 <div class="mt-16">
-                    <a href="https://maps.google.com/?q=Carrer+de+la+Pobla+Llarga,+n+3,+Valencia" target="_blank" class="inline-flex items-center bg-red-800 text-white px-10 py-5 rounded-sm hover:bg-red-700 transition-all font-bold tracking-widest text-sm uppercase">
-                        <i class="fa-brands fa-google mr-4 text-xl"></i> <span id="t-loc_cta">Abrir en Google Maps</span>
+                    <a href="tel:604151354" id="t-loc-btn" class="inline-block bg-sky-600 text-white px-12 py-5 rounded-sm font-bold shadow-2xl hover:bg-sky-500 transition tracking-[0.2em] uppercase text-sm">
+                        Llamar para Reservar
                     </a>
                 </div>
             </div>
-            <div class="h-[500px] bg-stone-800 rounded-sm overflow-hidden relative shadow-2xl border border-stone-700/50">
-                <img src="images/map-placeholder.jpg" class="w-full h-full object-cover opacity-50" alt="Ubicación Izakaya Kora">
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"><i class="fa-solid fa-location-dot text-6xl text-red-600"></i></div>
+            <div class="reveal-right">
+                <!-- 更新后的 Google 地图链接 -->
+                <a href="https://maps.app.goo.gl/BA2egyVvsYRbM322A" target="_blank" class="block h-[450px] bg-slate-800 rounded-sm border border-white/5 shadow-inner overflow-hidden relative group">
+                    <img src="images/map-screenshot.jpg" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition duration-500 grayscale group-hover:grayscale-0" alt="Izakaya Koryo Valencia Google Maps">
+                    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <div class="bg-sky-600 text-white px-6 py-3 rounded-full flex items-center gap-2 shadow-2xl animate-pulse">
+                            <i class="fa-solid fa-map-pin"></i>
+                            <span class="text-xs font-bold uppercase tracking-widest">Ver en Google Maps</span>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- 模态框 -->
-    <div id="global-modal" class="hidden fixed inset-0 z-[100] bg-black/95 items-center justify-center p-4 transition-all opacity-0" onclick="closeModal()">
-        <button class="absolute top-8 right-8 text-white/50 hover:text-white text-4xl"><i class="fa-solid fa-xmark"></i></button>
-        <img id="modal-img" src="" class="max-w-full max-h-[90vh] rounded-sm" alt="Zoomed View">
+    <!-- 全局模态框 -->
+    <div id="global-modal" class="hidden fixed inset-0 z-[100] bg-black/95 backdrop-blur-md items-center justify-center p-4 md:p-12 cursor-zoom-out opacity-0 transition-opacity duration-300" onclick="closeModal()">
+        <button class="absolute top-8 right-8 text-white/50 hover:text-white text-4xl transition z-[110]">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <img id="modal-img" src="" class="max-w-full max-h-[90vh] rounded-sm shadow-[0_0_50px_rgba(56,189,248,0.2)] border border-sky-900/30 transform scale-95 transition-transform duration-300" onclick="event.stopPropagation()" alt="Zoom">
     </div>
 
-    <!-- 底部 -->
-    <footer class="bg-[#0c0a09] py-20 text-center border-t border-stone-900">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-white text-3xl serif mb-8">Izakaya Kora</div>
-            <div class="flex justify-center gap-6 text-stone-500 mb-12">
-                <a href="#" class="hover:text-red-700 transition"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" class="hover:text-red-700 transition"><i class="fa-brands fa-facebook"></i></a>
-            </div>
-            <p class="text-stone-700 text-xs tracking-widest uppercase">&copy; 2026 Izakaya Kora · Valencia · Made with Heart</p>
+    <!-- 页脚 -->
+    <footer class="py-20 border-t border-white/5 text-center">
+        <div class="logo-diamond mx-auto mb-8"><span>魚</span></div>
+        <p class="text-slate-500 text-sm tracking-[0.4em] uppercase mb-4">&copy; 2026 Izakaya Koryo Valencia · Umami Experience</p>
+        <div class="mt-4">
+            <a href="legal.html" class="text-slate-500 hover:text-white text-xs mx-2 transition">Aviso Legal</a>
         </div>
     </footer>
 
     <script>
+        const sr = ScrollReveal({
+            origin: 'bottom',
+            distance: '50px',
+            duration: 1000,
+            delay: 200,
+            reset: false
+        });
+
+        sr.reveal('.reveal-hero', { origin: 'top', distance: '100px' });
+        sr.reveal('.reveal-bottom', { interval: 200 });
+        sr.reveal('.reveal-left', { origin: 'left', distance: '80px' });
+        sr.reveal('.reveal-right', { origin: 'right', distance: '80px' });
+
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        setInterval(nextSlide, 6000);
+
+        function scrollSection(id, direction) {
+            const container = document.getElementById(id);
+            const scrollAmount = window.innerWidth < 768 ? window.innerWidth * 0.8 : 500;
+            container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+        }
+
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             const icon = document.getElementById('menu-icon');
             if (menu.classList.contains('hidden')) {
                 menu.classList.remove('hidden');
                 setTimeout(() => menu.classList.add('active'), 10);
-                icon.classList.replace('fa-bars', 'fa-xmark');
-                document.body.style.overflow = 'hidden';
+                icon.classList.replace('fa-bars-staggered', 'fa-xmark');
             } else {
                 menu.classList.remove('active');
                 setTimeout(() => menu.classList.add('hidden'), 300);
-                icon.classList.replace('fa-xmark', 'fa-bars');
-                document.body.style.overflow = 'auto';
+                icon.classList.replace('fa-xmark', 'fa-bars-staggered');
             }
-        }
-
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.hero-slide');
-        function nextSlide() {
-            if (slides.length === 0) return;
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
-        }
-        
-        document.addEventListener('DOMContentLoaded', () => {
-             if (slides.length > 0) setInterval(nextSlide, 5000);
-        });
-
-        function scrollGallery(direction) {
-            const carousel = document.getElementById('dish-carousel');
-            carousel.scrollBy({ left: direction * 400, behavior: 'smooth' });
         }
 
         function openModal(src) {
@@ -409,16 +426,25 @@
             const img = document.getElementById('modal-img');
             img.src = src;
             modal.classList.remove('hidden');
-            setTimeout(() => { modal.classList.add('active'); modal.style.opacity = '1'; }, 10);
+            setTimeout(() => {
+                modal.classList.add('active'); 
+                modal.classList.remove('opacity-0');
+                img.classList.replace('scale-95', 'scale-100');
+            }, 10);
+            document.body.style.overflow = 'hidden';
         }
 
         function closeModal() {
             const modal = document.getElementById('global-modal');
-            modal.style.opacity = '0';
-            setTimeout(() => modal.classList.add('hidden'), 300);
+            const img = document.getElementById('modal-img');
+            modal.classList.add('opacity-0');
+            img.classList.replace('scale-100', 'scale-95');
+            setTimeout(() => {
+                modal.classList.remove('active');
+                modal.classList.add('hidden');
+            }, 300);
+            document.body.style.overflow = 'auto';
         }
-
-        window.onload = () => switchLanguage('es');
     </script>
 </body>
 </html>
