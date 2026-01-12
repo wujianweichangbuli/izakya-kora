@@ -104,7 +104,7 @@
                 hero_title: "鮮やかな味", hero_sub: "Autenticidad japonesa envuelta en brisa marina.",
                 story_title: "Nuestra Esencia", 
                 story_p1: "Taberna Koreana y Japonesa en el barrio de Benimaclet, en la ciudad de Valencia. Nuestro objetivo es ofrecer una cocina tradicional casera como me enseñó mi Madre y mi familia.",
-                story_p2: "No pretendemos ser un restaurante asiático, solo una casa de comidas koreano-japones con nuestro propio style. Fieles a nuestros ancestros.",
+                story_p2: "No pretendemos ser un restaurante asiático, solo una casa de comidas koreano-japones con nuestro propio estilo. Fieles a nuestros ancestros.",
                 gallery_title: "Sugerencias del Chef",
                 menu_title: "Nuestra Carta",
                 loc_title: "Visitarnos", loc_btn: "Llamar para Reservar"
@@ -163,12 +163,13 @@
 
     <!-- 导航栏 -->
     <nav class="fixed w-full z-50 glass-morphism border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <div class="max-w-7xl mx-auto px-6 h-16 md:h-20 flex items-center justify-between">
             <div class="flex items-center gap-4 z-50">
-                <div class="logo-diamond"><span>魚</span></div>
-                <span class="text-2xl font-bold serif tracking-wider text-white">Izakaya Koryo Valencia</span>
+                <div class="logo-diamond transform scale-75 md:scale-100"><span>魚</span></div>
+                <span class="text-xl md:text-2xl font-bold serif tracking-wider text-white">Izakaya Koryo</span>
             </div>
             
+            <!-- 桌面菜单 -->
             <div class="hidden lg:flex space-x-8 text-xs font-bold tracking-widest text-slate-300 items-center uppercase">
                 <a href="#story" id="t-nav-story" class="hover:text-sky-400 transition">Historia</a>
                 <a href="#menu" id="t-nav-menu" class="hover:text-sky-400 transition">Menú</a>
@@ -186,6 +187,7 @@
                 </a>
             </div>
 
+            <!-- 移动端菜单按钮 -->
             <button onclick="toggleMobileMenu()" class="lg:hidden z-50 text-white text-2xl">
                 <i class="fa-solid fa-bars-staggered" id="menu-icon"></i>
             </button>
@@ -193,17 +195,17 @@
     </nav>
 
     <!-- 移动端菜单 -->
-    <div id="mobile-menu" class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-40 flex-col items-center justify-center space-y-10 transition-all">
-        <a href="#story" onclick="toggleMobileMenu()" class="text-3xl text-white font-serif">Historia</a>
-        <a href="#menu" onclick="toggleMobileMenu()" class="text-3xl text-white font-serif">Menú</a>
-        <a href="#gallery" onclick="toggleMobileMenu()" class="text-3xl text-white font-serif">Especiales</a>
-        <a href="#location" onclick="toggleMobileMenu()" class="text-3xl text-white font-serif">Contacto</a>
-        <div class="flex gap-6">
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-xl z-40 flex-col items-center justify-center space-y-8 transition-all">
+        <a href="#story" onclick="toggleMobileMenu()" class="text-2xl md:text-3xl text-white font-serif">Historia</a>
+        <a href="#menu" onclick="toggleMobileMenu()" class="text-2xl md:text-3xl text-white font-serif">Menú</a>
+        <a href="#gallery" onclick="toggleMobileMenu()" class="text-2xl md:text-3xl text-white font-serif">Especiales</a>
+        <a href="#location" onclick="toggleMobileMenu()" class="text-2xl md:text-3xl text-white font-serif">Contacto</a>
+        <div class="flex gap-6 mt-4">
             <button onclick="switchLanguage('es'); toggleMobileMenu()" class="text-xl text-white hover:text-sky-400">ES</button>
             <button onclick="switchLanguage('val'); toggleMobileMenu()" class="text-xl text-white hover:text-sky-400">VAL</button>
             <button onclick="switchLanguage('en'); toggleMobileMenu()" class="text-xl text-white hover:text-sky-400">EN</button>
         </div>
-        <a href="tel:604151354" class="t-nav-btn bg-sky-600 text-white px-10 py-4 rounded-full text-lg">Reservar</a>
+        <a href="tel:604151354" class="t-nav-btn bg-sky-600 text-white px-8 py-3 rounded-full text-lg mt-4">Reservar</a>
     </div>
 
     <!-- 首页 Hero -->
@@ -214,53 +216,54 @@
         </div>
         <div class="hero-overlay"></div>
         <div class="relative z-10 text-center px-4 reveal-hero">
-            <span class="text-sky-400 text-sm font-bold tracking-[0.5em] uppercase mb-4 block">Izakaya Koryo Valencia · Mar y Tradición</span>
-            <h1 id="t-hero-title" class="text-6xl md:text-9xl font-bold serif mb-8 text-white">鮮やかな味</h1>
-            <p id="t-hero-sub" class="text-xl md:text-2xl text-slate-300 font-light tracking-widest mb-12 max-w-2xl mx-auto">
+            <span class="text-sky-400 text-xs md:text-sm font-bold tracking-[0.3em] md:tracking-[0.5em] uppercase mb-4 block">Izakaya Koryo Valencia</span>
+            <h1 id="t-hero-title" class="text-5xl md:text-9xl font-bold serif mb-6 md:mb-8 text-white">鮮やかな味</h1>
+            <p id="t-hero-sub" class="text-lg md:text-2xl text-slate-300 font-light tracking-widest mb-10 md:mb-12 max-w-2xl mx-auto">
                 Autenticidad japonesa envuelta en brisa marina.
             </p>
-            <div class="flex flex-wrap justify-center gap-6">
-                <a href="#menu" class="bg-white text-slate-900 px-12 py-4 rounded-sm font-bold hover:bg-sky-400 hover:text-white transition duration-500 uppercase tracking-widest text-xs">Explorar Menú</a>
-                <a href="tel:604151354" class="bg-sky-600 text-white px-12 py-4 rounded-sm font-bold hover:bg-sky-500 transition duration-500 uppercase tracking-widest text-xs shadow-xl">Reservar ahora</a>
+            <div class="flex flex-col md:flex-row justify-center gap-4 md:gap-6">
+                <a href="#menu" class="bg-white text-slate-900 px-8 py-3 md:px-12 md:py-4 rounded-sm font-bold hover:bg-sky-400 hover:text-white transition duration-500 uppercase tracking-widest text-xs">Explorar Menú</a>
+                <a href="tel:604151354" class="bg-sky-600 text-white px-8 py-3 md:px-12 md:py-4 rounded-sm font-bold hover:bg-sky-500 transition duration-500 uppercase tracking-widest text-xs shadow-xl">Reservar</a>
             </div>
         </div>
     </header>
 
-    <!-- 品牌故事 -->
-    <section id="story" class="py-32 px-6 relative">
-        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+    <!-- 品牌故事 (间距大幅缩减) -->
+    <section id="story" class="py-16 md:py-32 px-6 relative">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center">
             <div class="reveal-left">
                 <div class="relative">
                     <div class="absolute -top-4 -left-4 w-full h-full border border-sky-900/30"></div>
-                    <img src="images/story-family.jpg" class="relative z-10 rounded-sm shadow-2xl w-full h-[500px] object-cover" alt="Nuestra Historia">
+                    <img src="images/story-family.jpg" class="relative z-10 rounded-sm shadow-2xl w-full h-[300px] md:h-[500px] object-cover" alt="Nuestra Historia">
                 </div>
             </div>
             <div class="reveal-right">
-                <span class="text-sky-500 font-bold tracking-[0.4em] text-sm mb-6 block uppercase">Benimaclet, Valencia</span>
-                <h2 id="t-story-title" class="text-4xl md:text-5xl serif mb-10 text-white leading-tight">Nuestra Esencia</h2>
-                <div class="space-y-6 text-slate-300 text-lg font-light leading-relaxed">
+                <span class="text-sky-500 font-bold tracking-[0.2em] md:tracking-[0.4em] text-xs md:text-sm mb-4 block uppercase">Benimaclet, Valencia</span>
+                <h2 id="t-story-title" class="text-3xl md:text-5xl serif mb-6 md:mb-10 text-white leading-tight">Nuestra Esencia</h2>
+                <div class="space-y-4 md:space-y-6 text-slate-300 text-base md:text-lg font-light leading-relaxed">
                     <p id="t-story-p1">Taberna Koreana y Japonesa en el barrio de Benimaclet, en la ciudad de Valencia en Comunidad Valenciana, ESPAÑA. Nuestro objetivo es ofrecer una cocina tradicional casera como me enseñó mi Madre y mi familia.</p>
-                    <p id="t-story-p2">No pretendemos ser un restaurante asiático, solo una casa de comidas koreano-japones con nuestro propio estilo. No deseamos que nos comparen con nadie, somos como somos y queremos ser naturales y faciles a nuestros ancestros.</p>
+                    <p id="t-story-p2">No pretendemos ser un restaurante asiático, solo una casa de comidas koreano-japones con nuestro propio estilo. No deseamos que nos comparen con nadie, somos como somos y queremos ser naturales y fieles a nuestros ancestros.</p>
                     <p class="text-sky-400 italic">"Bienvenidos todos a esta casa, intentaremos atenderos de la mejor manera que podamos. Gracias a todos por vuestro tiempo y cordialidad."</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 特色菜品 -->
-    <section id="gallery" class="py-32 bg-slate-900/20">
+    <!-- 特色菜品 (间距缩减) -->
+    <section id="gallery" class="py-16 md:py-32 bg-slate-900/20">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 reveal-bottom">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-8 md:mb-16 gap-6 reveal-bottom">
                 <div>
-                    <h2 id="t-gallery-title" class="text-4xl md:text-5xl serif text-white mb-4">Sugerencias del Chef</h2>
-                    <div class="w-24 h-1 bg-sky-500"></div>
+                    <h2 id="t-gallery-title" class="text-3xl md:text-5xl serif text-white mb-2 md:mb-4">Sugerencias del Chef</h2>
+                    <div class="w-16 md:w-24 h-1 bg-sky-500"></div>
                 </div>
-                <div class="flex gap-4">
+                <!-- 移动端隐藏按钮，使用原生滑动体验更好 -->
+                <div class="hidden md:flex gap-4">
                     <button onclick="scrollSection('dish-carousel', -1)" class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition"><i class="fa-solid fa-chevron-left"></i></button>
                     <button onclick="scrollSection('dish-carousel', 1)" class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
-            <div id="dish-carousel" class="flex gap-8 overflow-x-auto hide-scrollbar snap-x snap-mandatory py-4 reveal-bottom">
+            <div id="dish-carousel" class="flex gap-4 md:gap-8 overflow-x-auto hide-scrollbar snap-x snap-mandatory py-4 reveal-bottom">
                 <script>
                     const dishes = [
                         {img: 'images/dish-1.jpg', title: 'Gyudon', desc: 'La combinación perfecta de carne y cebolla'},
@@ -272,14 +275,14 @@
                     ];
                     dishes.forEach(dish => {
                         document.write(`
-                            <div class="glass-morphism rounded-sm overflow-hidden group snap-center shrink-0 w-full md:w-[calc(33.333%-22px)]" onclick="openModal('${dish.img}')">
-                                <div class="overflow-hidden h-72 cursor-zoom-in">
+                            <div class="glass-morphism rounded-sm overflow-hidden group snap-center shrink-0 w-[80vw] md:w-[calc(33.333%-22px)]" onclick="openModal('${dish.img}')">
+                                <div class="overflow-hidden h-60 md:h-72 cursor-zoom-in">
                                     <img src="${dish.img}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="${dish.title}">
                                 </div>
-                                <div class="p-8">
-                                    <h4 class="text-2xl serif text-white mb-2">${dish.title}</h4>
-                                    <p class="text-slate-400 text-sm font-light italic">${dish.desc}</p>
-                                    <div class="mt-6 flex justify-end items-center">
+                                <div class="p-6 md:p-8">
+                                    <h4 class="text-xl md:text-2xl serif text-white mb-2">${dish.title}</h4>
+                                    <p class="text-slate-400 text-xs md:text-sm font-light italic line-clamp-2">${dish.desc}</p>
+                                    <div class="mt-4 md:mt-6 flex justify-end items-center">
                                         <button class="text-xs uppercase tracking-widest text-white border-b border-sky-500 pb-1">Ver más</button>
                                     </div>
                                 </div>
@@ -288,31 +291,33 @@
                     });
                 </script>
             </div>
+            <!-- 移动端提示滑动 -->
+            <div class="md:hidden text-center text-slate-500 text-xs mt-2 opacity-60">Desliza para ver más →</div>
         </div>
     </section>
 
     <!-- 菜单展示 -->
-    <section id="menu" class="py-32 border-t border-white/5">
+    <section id="menu" class="py-16 md:py-32 border-t border-white/5">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 reveal-bottom">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-8 md:mb-16 gap-6 reveal-bottom">
                 <div>
-                    <h2 id="t-menu-title" class="text-4xl md:text-5xl serif text-white mb-4">Nuestra Carta</h2>
-                    <p class="text-slate-400">Haz clic en las páginas para ampliar</p>
+                    <h2 id="t-menu-title" class="text-3xl md:text-5xl serif text-white mb-2 md:mb-4">Nuestra Carta</h2>
+                    <p class="text-slate-400 text-sm md:text-base">Haz clic en las páginas para ampliar</p>
                 </div>
-                <div class="flex gap-4">
+                <div class="hidden md:flex gap-4">
                     <button onclick="scrollSection('menu-carousel', -1)" class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition"><i class="fa-solid fa-chevron-left"></i></button>
                     <button onclick="scrollSection('menu-carousel', 1)" class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
             </div>
-            <div id="menu-carousel" class="flex gap-6 overflow-x-auto hide-scrollbar snap-x snap-mandatory py-4 reveal-bottom">
+            <div id="menu-carousel" class="flex gap-4 md:gap-6 overflow-x-auto hide-scrollbar snap-x snap-mandatory py-4 reveal-bottom">
                 <script>
                     for(let i=1; i<=6; i++) {
                         document.write(`
-                            <div onclick="openModal('images/menu-page-${i}.jpg')" class="snap-center shrink-0 w-[80vw] md:w-[350px] group cursor-zoom-in">
+                            <div onclick="openModal('images/menu-page-${i}.jpg')" class="snap-center shrink-0 w-[60vw] md:w-[350px] group cursor-zoom-in">
                                 <div class="glass-morphism p-2 rounded-sm h-full hover:border-sky-500 transition duration-300">
                                     <img src="images/menu-page-${i}.jpg" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-500" alt="Menu Page ${i}">
                                 </div>
-                                <div class="text-center mt-4 text-xs tracking-widest text-slate-500">PÁGINA 0${i}</div>
+                                <div class="text-center mt-3 text-[10px] md:text-xs tracking-widest text-slate-500">PÁGINA 0${i}</div>
                             </div>
                         `);
                     }
@@ -321,39 +326,38 @@
         </div>
     </section>
 
-    <!-- 联系区域 -->
-    <section id="location" class="py-32 bg-slate-900/40">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16">
+    <!-- 联系区域 (高度优化) -->
+    <section id="location" class="py-16 md:py-32 bg-slate-900/40">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16">
             <div class="reveal-left">
-                <h2 id="t-loc-title" class="text-5xl serif text-white mb-12">Visitarnos</h2>
-                <div class="space-y-10">
-                    <div class="flex items-center gap-6">
-                        <div class="w-12 h-12 bg-sky-900/30 flex items-center justify-center text-sky-400 border border-sky-500/20"><i class="fa-solid fa-location-dot"></i></div>
-                        <p class="text-xl text-slate-300">Carrer de la Pobla Llarga, 3, 46020 Valencia</p>
+                <h2 id="t-loc-title" class="text-4xl md:text-5xl serif text-white mb-8 md:mb-12">Visitarnos</h2>
+                <div class="space-y-6 md:space-y-10">
+                    <div class="flex items-center gap-4 md:gap-6">
+                        <div class="w-10 h-10 md:w-12 md:h-12 bg-sky-900/30 flex items-center justify-center text-sky-400 border border-sky-500/20"><i class="fa-solid fa-location-dot"></i></div>
+                        <p class="text-lg md:text-xl text-slate-300">Carrer de la Pobla Llarga, 3, 46020 Valencia</p>
                     </div>
-                    <div class="flex items-center gap-6">
-                        <div class="w-12 h-12 bg-sky-900/30 flex items-center justify-center text-sky-400 border border-sky-500/20"><i class="fa-solid fa-phone"></i></div>
-                        <p class="text-xl text-slate-300">+34 604 151 354</p>
+                    <div class="flex items-center gap-4 md:gap-6">
+                        <div class="w-10 h-10 md:w-12 md:h-12 bg-sky-900/30 flex items-center justify-center text-sky-400 border border-sky-500/20"><i class="fa-solid fa-phone"></i></div>
+                        <p class="text-lg md:text-xl text-slate-300">+34 604 151 354</p>
                     </div>
-                    <div class="flex items-center gap-6">
-                        <div class="w-12 h-12 bg-sky-900/30 flex items-center justify-center text-sky-400 border border-sky-500/20"><i class="fa-solid fa-clock"></i></div>
-                        <p class="text-xl text-slate-300">Horario: Martes a Domingo (13:30 - 16:30, 20:00 - 00:00)</p>
+                    <div class="flex items-center gap-4 md:gap-6">
+                        <div class="w-10 h-10 md:w-12 md:h-12 bg-sky-900/30 flex items-center justify-center text-sky-400 border border-sky-500/20"><i class="fa-solid fa-clock"></i></div>
+                        <p class="text-base md:text-xl text-slate-300">Horario: Martes a Domingo (13:30 - 16:30, 20:00 - 00:00)</p>
                     </div>
                 </div>
-                <div class="mt-16">
-                    <a href="tel:604151354" id="t-loc-btn" class="inline-block bg-sky-600 text-white px-12 py-5 rounded-sm font-bold shadow-2xl hover:bg-sky-500 transition tracking-[0.2em] uppercase text-sm">
+                <div class="mt-10 md:mt-16">
+                    <a href="tel:604151354" id="t-loc-btn" class="inline-block bg-sky-600 text-white px-8 py-4 md:px-12 md:py-5 rounded-sm font-bold shadow-2xl hover:bg-sky-500 transition tracking-[0.2em] uppercase text-xs md:text-sm">
                         Llamar para Reservar
                     </a>
                 </div>
             </div>
             <div class="reveal-right">
-                <!-- 更新后的 Google 地图链接 -->
-                <a href="https://maps.app.goo.gl/BA2egyVvsYRbM322A" target="_blank" class="block h-[450px] bg-slate-800 rounded-sm border border-white/5 shadow-inner overflow-hidden relative group">
+                <a href="https://maps.app.goo.gl/BA2egyVvsYRbM322A" target="_blank" class="block h-[250px] md:h-[450px] bg-slate-800 rounded-sm border border-white/5 shadow-inner overflow-hidden relative group">
                     <img src="images/map-screenshot.jpg" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition duration-500 grayscale group-hover:grayscale-0" alt="Izakaya Koryo Valencia Google Maps">
                     <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                        <div class="bg-sky-600 text-white px-6 py-3 rounded-full flex items-center gap-2 shadow-2xl animate-pulse">
+                        <div class="bg-sky-600 text-white px-4 py-2 md:px-6 md:py-3 rounded-full flex items-center gap-2 shadow-2xl animate-pulse">
                             <i class="fa-solid fa-map-pin"></i>
-                            <span class="text-xs font-bold uppercase tracking-widest">Ver en Google Maps</span>
+                            <span class="text-[10px] md:text-xs font-bold uppercase tracking-widest">Ver en Google Maps</span>
                         </div>
                     </div>
                 </a>
@@ -363,34 +367,34 @@
 
     <!-- 全局模态框 -->
     <div id="global-modal" class="hidden fixed inset-0 z-[100] bg-black/95 backdrop-blur-md items-center justify-center p-4 md:p-12 cursor-zoom-out opacity-0 transition-opacity duration-300" onclick="closeModal()">
-        <button class="absolute top-8 right-8 text-white/50 hover:text-white text-4xl transition z-[110]">
+        <button class="absolute top-4 right-4 md:top-8 md:right-8 text-white/50 hover:text-white text-3xl md:text-4xl transition z-[110]">
             <i class="fa-solid fa-xmark"></i>
         </button>
-        <img id="modal-img" src="" class="max-w-full max-h-[90vh] rounded-sm shadow-[0_0_50px_rgba(56,189,248,0.2)] border border-sky-900/30 transform scale-95 transition-transform duration-300" onclick="event.stopPropagation()" alt="Zoom">
+        <img id="modal-img" src="" class="max-w-full max-h-[85vh] md:max-h-[90vh] rounded-sm shadow-[0_0_50px_rgba(56,189,248,0.2)] border border-sky-900/30 transform scale-95 transition-transform duration-300" onclick="event.stopPropagation()" alt="Zoom">
     </div>
 
     <!-- 页脚 -->
-    <footer class="py-20 border-t border-white/5 text-center">
-        <div class="logo-diamond mx-auto mb-8"><span>魚</span></div>
-        <p class="text-slate-500 text-sm tracking-[0.4em] uppercase mb-4">&copy; 2026 Izakaya Koryo Valencia · Umami Experience</p>
+    <footer class="py-12 md:py-20 border-t border-white/5 text-center">
+        <div class="logo-diamond mx-auto mb-6 md:mb-8"><span>魚</span></div>
+        <p class="text-slate-500 text-[10px] md:text-sm tracking-[0.2em] md:tracking-[0.4em] uppercase mb-4">&copy; 2026 Izakaya Koryo Valencia · Umami Experience</p>
         <div class="mt-4">
-            <a href="legal.html" class="text-slate-500 hover:text-white text-xs mx-2 transition">Aviso Legal</a>
+            <a href="legal.html" class="text-slate-500 hover:text-white text-[10px] md:text-xs mx-2 transition">Aviso Legal</a>
         </div>
     </footer>
 
     <script>
         const sr = ScrollReveal({
             origin: 'bottom',
-            distance: '50px',
+            distance: '30px', // 移动端减小动画距离
             duration: 1000,
-            delay: 200,
+            delay: 100,
             reset: false
         });
 
-        sr.reveal('.reveal-hero', { origin: 'top', distance: '100px' });
-        sr.reveal('.reveal-bottom', { interval: 200 });
-        sr.reveal('.reveal-left', { origin: 'left', distance: '80px' });
-        sr.reveal('.reveal-right', { origin: 'right', distance: '80px' });
+        sr.reveal('.reveal-hero', { origin: 'top', distance: '50px' });
+        sr.reveal('.reveal-bottom', { interval: 150 });
+        sr.reveal('.reveal-left', { origin: 'left', distance: '50px' });
+        sr.reveal('.reveal-right', { origin: 'right', distance: '50px' });
 
         let currentSlide = 0;
         const slides = document.querySelectorAll('.hero-slide');
